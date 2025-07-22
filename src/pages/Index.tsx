@@ -107,15 +107,6 @@ const Index = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <Button 
-              variant={isAdmin ? "outline" : "default"} 
-              onClick={() => setIsAdmin(!isAdmin)}
-              size="sm"
-            >
-              <Icon name={isAdmin ? "UserX" : "UserCheck"} size={16} className="mr-2" />
-              {isAdmin ? "Выйти из админки" : "Войти как админ"}
-            </Button>
-            
             {isAdmin ? (
               <Dialog>
                 <DialogTrigger asChild>
@@ -203,6 +194,15 @@ const Index = () => {
                 <span className="text-sm">Только администратор может создавать встречи</span>
               </div>
             )}
+            
+            <Button 
+              variant={isAdmin ? "outline" : "default"} 
+              onClick={() => setIsAdmin(!isAdmin)}
+              size="sm"
+            >
+              <Icon name={isAdmin ? "UserX" : "UserCheck"} size={16} className="mr-2" />
+              {isAdmin ? "Выйти из админки" : "Войти как админ"}
+            </Button>
           </div>
         </div>
 
