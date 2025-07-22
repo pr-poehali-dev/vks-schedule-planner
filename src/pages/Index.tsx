@@ -106,23 +106,7 @@ const Index = () => {
             <p className="text-slate-600 text-lg">Управление видеоконференциями и встречами</p>
           </div>
           
-          {isAdmin ? (
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-medium">
-                  <Icon name="Plus" size={20} className="mr-2" />
-                  Создать встречу
-                </Button>
-              </DialogTrigger>
-            </Dialog>
-          ) : (
-            <div className="flex items-center gap-3 text-slate-600">
-              <Icon name="Shield" size={20} />
-              <span className="text-sm">Только администратор может создавать встречи</span>
-            </div>
-          )}
-          
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <Button 
               variant={isAdmin ? "outline" : "default"} 
               onClick={() => setIsAdmin(!isAdmin)}
@@ -131,16 +115,15 @@ const Index = () => {
               <Icon name={isAdmin ? "UserX" : "UserCheck"} size={16} className="mr-2" />
               {isAdmin ? "Выйти из админки" : "Войти как админ"}
             </Button>
-          </div>
-          
-          {isAdmin && (
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-medium">
-                  <Icon name="Plus" size={20} className="mr-2" />
-                  Создать встречу
-                </Button>
-              </DialogTrigger>
+            
+            {isAdmin ? (
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-medium">
+                    <Icon name="Plus" size={20} className="mr-2" />
+                    Создать встречу
+                  </Button>
+                </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle className="text-xl font-semibold">Новая встреча</DialogTitle>
@@ -212,9 +195,15 @@ const Index = () => {
                   Создать встречу
                 </Button>
               </div>
-              </DialogContent>
-            </Dialog>
-          )}
+                </DialogContent>
+              </Dialog>
+            ) : (
+              <div className="flex items-center gap-3 text-slate-600">
+                <Icon name="Shield" size={20} />
+                <span className="text-sm">Только администратор может создавать встречи</span>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
